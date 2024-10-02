@@ -1,0 +1,40 @@
+@import './variables'; 
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: $background-gradient; 
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 4rem; 
+  font-weight: bold; 
+  background: $gradient-text;
+  background-clip:text;// Welcome text bg issue
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  text-align: center; 
+  margin: 0;
+}
+
+.navigate-button {
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+  background-color: $button-background; 
+  color: $white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  transition: box-shadow 0.3s;
+}
+
+.navigate-button:hover {
+  box-shadow: 0 4px 20px $button-hover-shadow; 
+}

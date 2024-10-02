@@ -1,0 +1,107 @@
+@import "./variables";
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  background: $background-gradient;
+  flex-direction: column;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.layout-main {
+  flex: 1;
+  padding: 20px;
+}
+
+.layout-footer {
+  width: 80%;
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  color: $footer-text-color;
+}
+
+// Add Item Screen
+.select__control {
+  cursor: default;
+  margin-top: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.add-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  .select-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 20px;
+
+    label {
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    .select {
+      width: 60%;
+      margin-bottom: 15px;
+    }
+  }
+
+  .save-button {
+    padding: 10px 20px;
+    background-color: $save-btn-background;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $save-btn-background-hvr;
+    }
+  }
+}
+.add-data-container {
+  display: flex;
+  color: $footer-text-color;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  padding: 20px;
+}
+
+.add-data-title {
+  margin: 0;
+}
+
+.table-row:hover {
+  background-color: $table-row-hover;
+  cursor: pointer;
+}
+
+.no-data-found {
+  text-align: center;
+  margin: 20px;
+  font-weight: 500;
+  color: $footer-text-color;
+}
+
+.found-data {
+  margin: 20px;
+  font-weight: 500;
+  color: $footer-text-color;
+}
