@@ -14,7 +14,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import InfoIcon from "@mui/icons-material/Info";
 import { userLanguage } from "network/Constant";
 
-const DataTable = ({ records}) => {
+const DataTable = ({ records }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage] = useState(10);
 
@@ -50,40 +50,48 @@ const DataTable = ({ records}) => {
   }
   return (
     <div>
-    <h3 className="found-data">{records.length} records found</h3>
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell style={{ textAlign: "center" }}>Order</TableCell>
-            <TableCell style={{ textAlign: "center" }}>City</TableCell>
-            <TableCell style={{ textAlign: "center" }}>District</TableCell>
-            <TableCell style={{ textAlign: "center" }}>Created At</TableCell>
-            {/*<TableCell style={{ textAlign: "center" }}>Actions</TableCell>*/}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {records
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row, index) => (
-              <TableRow
-                onClick={() => handleDetail(row.id)}
-                className="table-row"
-                key={row.id}
-              >
-                <TableCell style={{ textAlign: "center" }}>
-                  {index + 1}
-                </TableCell>
-                <TableCell style={{ textAlign: "center" }}>
-                  {row.city.label}
-                </TableCell>
-                <TableCell style={{ textAlign: "center" }}>
-                  {row.district.label}
-                </TableCell>
-                <TableCell style={{ textAlign: "center" }}>
-                  {formatDate(row.createdAt)}
-                </TableCell>
-                {/*
+      <h3 className="found-data">{records.length} records found</h3>
+      <TableContainer
+        sx={{
+          height: "550px",
+          overflowY: "auto",
+          "&::-webkit-scrollbar": { display: "none" },
+          "-ms-overflow-style": "none",
+          scrollbarWidth: "none",
+        }}
+      >
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              <TableCell style={{ textAlign: "center" }}>Order</TableCell>
+              <TableCell style={{ textAlign: "center" }}>City</TableCell>
+              <TableCell style={{ textAlign: "center" }}>District</TableCell>
+              <TableCell style={{ textAlign: "center" }}>Created At</TableCell>
+              {/*<TableCell style={{ textAlign: "center" }}>Actions</TableCell>*/}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {records
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index) => (
+                <TableRow
+                  onClick={() => handleDetail(row.id)}
+                  className="table-row"
+                  key={row.id}
+                >
+                  <TableCell style={{ textAlign: "center" }}>
+                    {index + 1}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center" }}>
+                    {row.city.label}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center" }}>
+                    {row.district.label}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center" }}>
+                    {formatDate(row.createdAt)}
+                  </TableCell>
+                  {/*
                 <TableCell style={{ textAlign: "center" }}>
                   <IconButton
                     onClick={(e) => {
@@ -111,10 +119,11 @@ const DataTable = ({ records}) => {
                   </IconButton>
                 </TableCell>
                 */}
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <TablePagination
         rowsPerPageOptions={[]}
         component="div"
@@ -123,7 +132,6 @@ const DataTable = ({ records}) => {
         page={page}
         onPageChange={handleChangePage}
       />
-    </TableContainer>
     </div>
   );
 };

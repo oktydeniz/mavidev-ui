@@ -21,7 +21,7 @@ function AddItem() {
   const [selectedDistrict, setSelectedDistrict] = useState(null);
 
   const handleGoToShowItems = () => {
-    navigate("/items");
+    navigate("/records");
   };
 
   const fetchDistricts = async (cityId) => {

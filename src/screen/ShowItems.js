@@ -35,7 +35,7 @@ function ShowItems() {
   return (
     <div className="add-item-container">
       <div className="add-data-container">
-        <h2 className="add-data-title">Previous Records</h2>
+        <h2 className="add-data-title">Records</h2>
         <Button
           variant="outlined"
           color="success"

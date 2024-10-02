@@ -2,7 +2,7 @@ import { MainContext } from "components/MainContext";
 import Welcome from "screen/Welcome";
 import AddItem from "screen/AddItem";
 import ShowItems from "screen/ShowItems";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { useState } from "react";
 import Layout from "components/Layout";
 import WelcomeLayout from "components/WelcomeLayout";
@@ -24,9 +24,10 @@ function App() {
             <Route path="item" element={<Layout />}>
               <Route index element={<AddItem />} />
             </Route>
-            <Route path="items" element={<Layout />}>
+            <Route path="records" element={<Layout />}>
               <Route index element={<ShowItems />} />
             </Route>
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </MainContext.Provider>
@@ -41,7 +42,7 @@ export default App;
  * <Route path="/" element={<Layout />}>
             <Route index element={<Welcome />} />
             <Route path="item" element={<AddItem />} />
-            <Route path="items" element={<ShowItems />} />
+            <Route path="records" element={<ShowItems />} />
           </Route>
  * 
  * 
