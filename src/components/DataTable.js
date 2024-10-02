@@ -9,6 +9,7 @@ import {
   TablePagination,
   IconButton,
 } from "@mui/material";
+
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InfoIcon from "@mui/icons-material/Info";
@@ -56,7 +57,7 @@ const DataTable = ({ records }) => {
           height: "550px",
           overflowY: "auto",
           "&::-webkit-scrollbar": { display: "none" },
-          "-ms-overflow-style": "none",
+          msOverflowStyle: "none",
           scrollbarWidth: "none",
         }}
       >
