@@ -1,4 +1,4 @@
-import { MainContext } from "components/MainContext";
+import { MainProvider } from "components/MainContext";
 import Welcome from "screen/Welcome";
 import AddItem from "screen/AddItem";
 import ShowItems from "screen/ShowItems";
@@ -15,7 +15,7 @@ function App() {
   const contextValue = { appendMethods, methods };
 
   return (
-    <MainContext.Provider value={contextValue}>
+    <MainProvider>
       <Router>
         <Routes>
             <Route path="/" element={<WelcomeLayout />}>
@@ -30,7 +30,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
-    </MainContext.Provider>
+    </MainProvider>
   );
 }
 
