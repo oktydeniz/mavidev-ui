@@ -2,7 +2,7 @@ import AppSelect from "components/AppSelect";
 import { getCities, getDistricts } from "network/CityDistrictService";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import ArticleIcon from "@mui/icons-material/Article";
 import { saveData } from "network/HomeService";
 import AppDialog from "components/AppDialog";
@@ -143,7 +143,15 @@ function AddItem() {
           Save
         </button>
       )}
-      <AppDialog openDialog={open} message={message} onClose={() => setOpen(false)} />
+      <AppDialog
+      open={open}
+      setOpen={setOpen}
+      actionText="Close"
+      onActionClick={ () => setOpen(false)}
+      actionColor="secondary"
+      >
+      <Typography gutterBottom>{message}</Typography>
+      </AppDialog>
     </div>
   );
 }

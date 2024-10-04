@@ -16,23 +16,22 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const AppDialog = ({ openDialog, message, onClose }) => {
-  const [open, setOpen] = useState(openDialog);
-
-  useEffect(() => {
-    setOpen(openDialog);
-  }, [openDialog]);
-
-  const handleCloseDialog = () => {
+const AppDialog = ({
+  open,
+  setOpen,
+  title = "Message",
+  children,
+  actionText,
+  onActionClick,
+  actionColor = "primary",
+}) => {
+  const handleClose = () => {
     setOpen(false);
-    if (onClose) {
-      onClose();
-    }
   };
 
   return (
     <BootstrapDialog
-      onClose={handleCloseDialog}
+      onClose={handleClose}
       TransitionComponent={Transition}
       keepMounted
       fullWidth
@@ -40,11 +39,11 @@ const AppDialog = ({ openDialog, message, onClose }) => {
       open={open}
     >
       <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-        Message
+        {title}
       </DialogTitle>
       <IconButton
         aria-label="close"
-        onClick={handleCloseDialog}
+        onClick={handleClose}
         sx={(theme) => ({
           position: "absolute",
           right: 8,
@@ -54,12 +53,10 @@ const AppDialog = ({ openDialog, message, onClose }) => {
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent dividers>
-        <Typography gutterBottom>{message}</Typography>
-      </DialogContent>
+      <DialogContent dividers>{children}</DialogContent>
       <DialogActions>
-        <Button autoFocus onClick={handleCloseDialog}>
-          Close
+        <Button autoFocus color={actionColor} onClick={onActionClick}>
+          {actionText}
         </Button>
       </DialogActions>
     </BootstrapDialog>
