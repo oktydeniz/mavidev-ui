@@ -68,6 +68,8 @@ const DataTable = ({ records }) => {
               <TableCell style={{ textAlign: "center" }}>City</TableCell>
               <TableCell style={{ textAlign: "center" }}>District</TableCell>
               <TableCell style={{ textAlign: "center" }}>Created At</TableCell>
+              <TableCell style={{ textAlign: "center" }}>Area</TableCell>
+              <TableCell style={{ textAlign: "center" }}>Population</TableCell>
               {/*<TableCell style={{ textAlign: "center" }}>Actions</TableCell>*/}
             </TableRow>
           </TableHead>
@@ -91,6 +93,12 @@ const DataTable = ({ records }) => {
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>
                     {formatDate(row.createdAt)}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center" }}>
+                  {row.area}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center" }}>
+                  {row.population}
                   </TableCell>
                   {/*
                 <TableCell style={{ textAlign: "center" }}>

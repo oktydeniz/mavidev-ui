@@ -2,7 +2,7 @@ import AppSelect from "components/AppSelect";
 import { getCities, getDistricts } from "network/CityDistrictService";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Typography } from "@mui/material";
+import { Button, Input, Typography } from "@mui/material";
 import ArticleIcon from "@mui/icons-material/Article";
 import { saveData } from "network/HomeService";
 import AppDialog from "components/AppDialog";
@@ -16,7 +16,8 @@ function AddItem() {
   const [open, setOpen] = useState(false);
   const [cities, setCities] = useState([]);
   const [districts, setDistricts] = useState([]);
-
+  const [area, setArea] = useState("");
+  const [population, setPopulation] = useState("");
   const [selectedCity, setSelectedCity] = useState(null);
   const [selectedDistrict, setSelectedDistrict] = useState(null);
 
@@ -75,11 +76,20 @@ function AddItem() {
     setSelectedDistrict(option);
   };
 
+  const handleAreaChange = (option) => {
+    setArea(option.target.value);
+  };
+
+  const handePopulationChange = (option) => {
+    setPopulation(option.target.value);
+  };
 
   const handleSave = async() => {
     var data = {
       city:selectedCity.value,
-      district:selectedDistrict.value
+      district:selectedDistrict.value,
+      population,
+      area,
     };
     try {
       const response = await saveData(data);
@@ -138,6 +148,10 @@ function AddItem() {
           </div>
         )}
       </div>
+      <Input type="text" fullWidth placeholder="Area" value={area} onChange={(e) => handleAreaChange(e)}/>
+      <br />
+      <Input type="text" fullWidth placeholder="Population" value={population} onChange={(e) => handePopulationChange(e)}/>
+      <br />
       {districts.length > 0 && cities.length > 0 && (
         <Button onClick={handleSave} className="save-button">
           Save
