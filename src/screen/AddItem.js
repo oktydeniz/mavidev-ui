@@ -139,9 +139,9 @@ function AddItem() {
         )}
       </div>
       {districts.length > 0 && cities.length > 0 && (
-        <button onClick={handleSave} className="save-button">
+        <Button onClick={handleSave} className="save-button">
           Save
-        </button>
+        </Button>
       )}
       <AppDialog
       open={open}
